@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\trips.csproj": {}
+    "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\trips.csproj": {}
   },
   "projects": {
-    "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\trips.csproj": {
+    "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\trips.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\trips.csproj",
+        "projectUniqueName": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\trips.csproj",
         "projectName": "trips",
-        "projectPath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\trips.csproj",
+        "projectPath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\trips.csproj",
         "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\obj\\",
+        "outputPath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

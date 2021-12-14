@@ -1,4 +1,4 @@
-import React, {Comoponent, Component} from 'react';
+import React, {Component} from 'react';
 
 
 export class Trips extends Component
@@ -43,19 +43,19 @@ export class Trips extends Component
         );
     }
 
-    render(){
-
+    render()
+    {
         let content = this.state.loading ? (
-            <p>Loading...</p>
+            <p><em>Loading...</em></p>
         ): (
             this.renderAllTripsTable(this.state.trips)
         );
 
         return (
         <div>
-            <h1>Trips</h1>
+            <h1>All Trips</h1>
             <p>Here, you can see all trips</p>
-            {content}
+            { content }
         </div>
         );
     }

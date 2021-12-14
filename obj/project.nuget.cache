@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YsjGPrb0t0YTgPsYIXD+Z2i50ZIqw5GosZXdznbM4YrIX0OGPRweH7CuzqzA2lseTjZq4XWayg8hfupAJP8iAw==",
+  "dgSpecHash": "utWhprFWINZ0nlHLJv6ody4UvRpiaE0mgxyUDSZ+AwpWmhSLUnNZJN2sizkdONitiuJ6Yw2tJUSAhC3EMM3qVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\trips.csproj",
+  "projectFilePath": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\flight_sched-master\\trips.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erick\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\6.0.0\\microsoft.aspnetcore.spaproxy.6.0.0.nupkg.sha512"
   ],
