@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44468",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\erick\\Documents\\GitHub\\linkInLearning\\BuldingAsp.netCoreReact\\trips-sched\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
