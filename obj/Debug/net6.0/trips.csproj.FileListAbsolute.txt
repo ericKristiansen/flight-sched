@@ -81,3 +81,4 @@ C:\Users\erick\Documents\GitHub\linkInLearning\BuldingAsp.netCoreReact\flight_sc
 C:\Users\erick\Documents\GitHub\linkInLearning\BuldingAsp.netCoreReact\flight_sched-master\obj\Debug\net6.0\ref\trips.dll
 C:\Users\erick\Documents\GitHub\linkInLearning\BuldingAsp.netCoreReact\flight_sched-master\obj\Debug\net6.0\trips.pdb
 C:\Users\erick\Documents\GitHub\linkInLearning\BuldingAsp.netCoreReact\flight_sched-master\obj\Debug\net6.0\trips.genruntimeconfig.cache
+C:\Users\erick\Documents\GitHub\linkInLearning\BuldingAsp.netCoreReact\flight_sched-master\bin\Debug\net6.0\package.json
