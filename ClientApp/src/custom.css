@@ -16,3 +16,8 @@ code {
 .trip-form {
   margin: 10% 30%;
 }
+
+.submit-div { 
+  margin-top: 2%;
+  float: right;
+}
