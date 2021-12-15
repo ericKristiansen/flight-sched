@@ -8,8 +8,20 @@ export class Trips extends Component
         super(props);
         this.state = {
             trips: [], 
-            loading: true
+            loading: true,
+            activeRow: -1
         }
+
+        this.onRowClick = this.onRowClick.bind();
+    }
+
+    onRowClick = (e) => {
+        this.setState({ activeRow: e.target.parentElement.getAttribute("value")}, this.afterStateChange);
+        
+    }
+
+    afterStateChange =() => {
+        console.log("row clicked: ", this.state.activeRow);
     }
 
     renderAllTripsTable(trips){
@@ -27,7 +39,7 @@ export class Trips extends Component
                 <tbody>
                     {
                     trips.map(trip => (
-                        <tr key={trip.id}>
+                        <tr key={trip.id} value={trip.id} onClick={this.onRowClick}>
                         <td>{trip.name}</td>
                         <td>{trip.description}</td>
                         <td>{trip.dateStarted}</td>
