@@ -47,7 +47,7 @@ namespace Trips.Controllers
             return Ok();
         }
 
-        [HttpGet("SingleTrip/{id}")]
+        [HttpGet("GetTrip/{id}")]
         public IActionResult GetTripById(int id)
         {
             var trip = _tripService.GetTripById(id);

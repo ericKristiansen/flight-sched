@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Trips } from './components/Trip/Trips';
 import { AddTrip } from './components/Trip/AddTrip';
+import { ModifyTrip } from './components/Trip/ModifyTrip';
 
 import './custom.css'
 
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/addtrip' component={AddTrip} />
         <Route path='/trips' component={Trips} />
+        <Route path='/modifytrip' component={ModifyTrip} />
       </Layout>
     );
   }
