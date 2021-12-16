@@ -26,7 +26,8 @@ export class AddTrip extends Component {
     }
 
     onChangeName(e){
-        this.setState({ name: e.target.value});
+        let val = e.target.value === null ? "": e.target.value; 
+        this.setState({ name: val});
         this.outputChange();
     }
 
