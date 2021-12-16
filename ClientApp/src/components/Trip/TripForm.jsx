@@ -26,13 +26,7 @@ export class TripForm extends Component {
         this.convertDate = this.convertDate.bind(this);
 
         this.onSubmit.bind(this);
-
     }
-
-    /* 
-        props: title, 
-        method: onSubmit, didMount: set value of trip from state
-    */
 
     componentDidMount = () => {
         //load from ...
@@ -41,19 +35,14 @@ export class TripForm extends Component {
         }
     }
 
-
-
     populateTrip = (id) => {
         axios.get(`https://localhost:7269/api/Trips/GetTrip/${id}`)
             .then(res => {
                 console.log(res);
                 this.setState({ trip: res.data, loading: false });
                 console.log("trip from state: ", this.state.trip);
-                //this.loadFormData();
             });
     }
-
-
 
     outputChange(val) {
         console.log(val + " : updated");
@@ -101,7 +90,7 @@ export class TripForm extends Component {
 
         }
         else if (this.props.title === "Add Trip") {
-            //Add Trip
+
             let tripObject = {
                 Id: Math.floor(Math.random() * 1000),
                 Name: this.state.name,
@@ -141,7 +130,7 @@ export class TripForm extends Component {
                         <label>Trip Name: </label>
                         <input type="text"
                             className="form-control"
-                            value={this.state.trip.name}
+                            defaultValue={this.state.trip.name}
                             onChange={this.onChangeName} 
                              />
                     </div>
@@ -149,7 +138,7 @@ export class TripForm extends Component {
                         <label>Description: </label>
                         <textarea type="text"
                             className="form-control"
-                            value={this.state.trip.description}
+                            defaultValue={this.state.trip.description}
                             onChange={this.onChangeDescription} />
                     </div>
 
@@ -159,7 +148,7 @@ export class TripForm extends Component {
                                 <label>Start Date: </label>
                                 <input type="date"
                                     className="form-control"
-                                    value={this.convertDate(this.state.trip.dateStarted)}
+                                    defaultValue={this.convertDate(this.state.trip.dateStarted)}
                                     onChange={this.onChangeDateStarted}
                                 />
                             </div>
@@ -170,7 +159,7 @@ export class TripForm extends Component {
                                 <label>Date of completion: </label>
                                 <input type="date"
                                     className="form-control"
-                                    value={this.convertDate(this.state.trip.dateCompleted)}
+                                    defaultValue={this.convertDate(this.state.trip.dateCompleted)}
                                     onChange={this.onChangeDateCompleted} />
                             </div>
                         </div>
