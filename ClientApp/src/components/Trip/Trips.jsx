@@ -59,9 +59,7 @@ export class Trips extends Component
 
 
     componentDidMount(){
-        console.log("calling populate...");
         this.populateTripsData();
-        console.log("...done w/ populate");
     }
 
     populateTripsData(){

@@ -11,10 +11,10 @@ export class TripForm extends Component {
             activeTripId: sessionStorage.getItem("ACTIVE_ROW"),
             trip: {
                 id: -1,
-                name: "default",
-                description: "default",
-                dateStarted: "default",
-                dateCompleted: "default"
+                name: "",
+                description: "",
+                dateStarted: null,
+                dateCompleted: null
             },
             loading: true
         };
@@ -77,6 +77,7 @@ export class TripForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        const {history} = this.props;
 
         if (this.props.title === "Modify Trip") {
 
@@ -95,24 +96,28 @@ export class TripForm extends Component {
                     console.log(res.data);
                     this.setState({ trip: res.data, loading: false });
                 });
-
-                this.props.history.push('/trips');
+                
+                history.push('/trips');
         }
         else if (this.props.title === "Add Trip") {
 
+            console.log("Add Trip...");
+
             let tripObject = {
                 Id: Math.floor(Math.random() * 1000),
-                Name: this.state.name,
-                Description: this.state.description,
-                DateStarted: this.state.dateStarted,
-                DateCompleted: this.state.dateCompleted
+                Name: this.state.trip.name,
+                Description: this.state.trip.description,
+                DateStarted: this.state.trip.dateStarted,
+                DateCompleted: this.state.trip.dateCompleted
             }
+
+            console.log("tripObject: " + JSON.stringify(tripObject));
 
             axios.post("https://localhost:7269/api/Trips/AddTrip", tripObject)
                 .then(res => {
-                    this.props.history.push('/trips');
+                    console.log(res.data);
+                    history.push('/trips');
                 });
-
         }
 
     }
@@ -121,25 +126,14 @@ export class TripForm extends Component {
      * Get a date format that makes sense for the date picker. 
      */
     convertDate = (dateString) => {
-        // new Date() will default to 1963 passed a null argument. The date picker will default
-        // to today passed a null defaultValue, which is more useful. => returning null for that reason
-        if (dateString === null)
-        {
-            return null;
-        }
-        let date = new Date(dateString);
-        let day = ("0" + date.getDate()).slice(-2);
-        let month = ("0" + (date.getMonth() + 1)).slice(-2);
-        let result = date.getFullYear()+"-"+(month)+"-"+(day) ;
-        console.log("date: ", result);
-        return result;
+        if (dateString === null) { return null; }
+        return new Date(dateString).toISOString().slice(0,10);
     }
 
 
     render() {
-        let content = this.state.loading ? (
-            <p><em>Loading...</em></p>
-        ) : (
+
+        let content = (
             <div className="trip-form" >
                 <h3>{this.props.title}</h3>
                 <form onSubmit={this.onSubmit}>
@@ -194,6 +188,6 @@ export class TripForm extends Component {
                 {content}
             </>
         );
-
-    }
+        }
+    
 }
