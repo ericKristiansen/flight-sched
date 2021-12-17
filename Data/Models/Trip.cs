@@ -7,5 +7,10 @@ namespace Trips.Data
         public string Description { get; set; }
         public DateTime DateStarted { get; set; }
         public DateTime? DateCompleted { get; set; }
+
+        public override string ToString()
+        {
+            return "Id: " + Id + ", " + "Name: " + Name; 
+        }
     }
 }

@@ -23,13 +23,15 @@ export class TripForm extends Component {
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDateStarted = this.onChangeDateStarted.bind(this);
         this.onChangeDateCompleted = this.onChangeDateCompleted.bind(this);
-        this.convertDate = this.convertDate.bind(this);
 
+        this.convertDate = this.convertDate.bind(this);
         this.onSubmit.bind(this);
     }
 
+    /***
+     * Load 
+     */
     componentDidMount = () => {
-        //load from ...
         if (this.props.title === "Modify Trip") {
             this.populateTrip(this.state.activeTripId);
         }
@@ -44,50 +46,57 @@ export class TripForm extends Component {
             });
     }
 
-    outputChange(val) {
-        console.log(val + " : updated");
+    outputChange(stTrip) {
+        this.setState({stTrip});
+        console.log("updated: ", stTrip);
     }
 
     onChangeName(e) {
-        let val = e.target.value === null ? "" : e.target.value;
-        this.setState({ name: val });
-        this.outputChange();
+        let stTrip = this.state.trip;
+        stTrip.name = e.target.value;
+        this.outputChange(stTrip);
     }
 
     onChangeDescription(e) {
-        this.setState({ description: e.target.value });
-        this.outputChange();
+        let stTrip = this.state.trip;
+        stTrip.description = e.target.value;
+        this.outputChange(stTrip);
     }
 
     onChangeDateStarted(e) {
-        this.setState({ dateStarted: e.target.value });
-        this.outputChange();
+        let stTrip = this.state.trip;
+        stTrip.dateStarted = e.target.value;
+        this.outputChange(stTrip);
     }
 
     onChangeDateCompleted(e) {
-        this.setState({ dateCompleted: e.target.value });
-        this.outputChange();
+        let stTrip = this.state.trip;
+        stTrip.dateCompleted = e.target.value;
+        this.outputChange(stTrip);
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { history } = this.props;
 
         if (this.props.title === "Modify Trip") {
 
             let tripObject = {
-                Id: this.state.id,
-                Name: this.state.name,
-                Description: this.state.description,
-                DateStarted: this.state.dateStarted,
-                DateCompleted: this.state.dateCompleted
+                Id: this.state.trip.id,
+                Name: this.state.trip.name,
+                Description: this.state.trip.description,
+                DateStarted: this.state.trip.dateStarted,
+                DateCompleted: this.state.trip.dateCompleted
             }
 
-            axios.post("https://localhost:7269/api/Trips/UpdateTrip", tripObject)
+            console.debug("Modify Trip: ", tripObject);
+
+            axios.put(`https://localhost:7269/api/Trips/UpdateTrip/${tripObject.Id}`, tripObject)
                 .then(res => {
-                    history.push('/trips');
+                    console.log(res.data);
+                    this.setState({ trip: res.data, loading: false });
                 });
 
+                this.props.history.push('/trips');
         }
         else if (this.props.title === "Add Trip") {
 
@@ -101,21 +110,29 @@ export class TripForm extends Component {
 
             axios.post("https://localhost:7269/api/Trips/AddTrip", tripObject)
                 .then(res => {
-                    history.push('/trips');
+                    this.props.history.push('/trips');
                 });
 
         }
+
     }
 
+    /***
+     * Get a date format that makes sense for the date picker. 
+     */
     convertDate = (dateString) => {
-        
+        // new Date() will default to 1963 passed a null argument. The date picker will default
+        // to today passed a null defaultValue, which is more useful. => returning null for that reason
+        if (dateString === null)
+        {
+            return null;
+        }
         let date = new Date(dateString);
-        console.log("date: ", date);
         let day = ("0" + date.getDate()).slice(-2);
         let month = ("0" + (date.getMonth() + 1)).slice(-2);
-        let today = date.getFullYear()+"-"+(month)+"-"+(day) ;
-        console.log("today: ", today);
-        return today;
+        let result = date.getFullYear()+"-"+(month)+"-"+(day) ;
+        console.log("date: ", result);
+        return result;
     }
 
 
@@ -131,7 +148,7 @@ export class TripForm extends Component {
                         <input type="text"
                             className="form-control"
                             defaultValue={this.state.trip.name}
-                            onChange={this.onChangeName} 
+                            onChange={this.onChangeName}
                              />
                     </div>
                     <div className="form-group">

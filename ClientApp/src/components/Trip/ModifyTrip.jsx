@@ -21,7 +21,7 @@ import { TripForm } from './TripForm';
     }
 
     componentDidMount() {
-        console.log("mounted modifytrips");
+        console.debug("mounted modifytrips");
         this.populateTrip(this.state.activeTripId);
     }
 
@@ -42,7 +42,7 @@ import { TripForm } from './TripForm';
         let content = this.state.loading ? (
             <p><em>Loading... </em></p>
         ): (
-            <TripForm title="Modify Trip" />
+            <TripForm title="Modify Trip" history={this.props.history}/>
         );
 
     return (

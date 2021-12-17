@@ -46,8 +46,8 @@ export class Trips extends Component
                         <td>{trip.name}</td>
                         <td>{trip.description}</td>
                         <td>{trip.dateStarted.substring(0, 10)}</td>
-                        <td>{trip.dateCompleted === null ? "": trip.dateCompleted.substring(0, 10)}</td>
-                        <td> - </td>
+                        <td>{trip.dateCompleted === null ? "NOT COMPLETED": trip.dateCompleted.substring(0, 10)}</td>
+                        <td> MODIFY TRIP </td>
                     </tr>
                     ))
                     }
