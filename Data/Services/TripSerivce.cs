@@ -23,6 +23,10 @@ namespace Trips.Data
                 oldTrip.DateStarted = trip.DateStarted;
                 oldTrip.DateCompleted = trip.DateCompleted;
             }
+            else
+            {
+                System.Console.Out.WriteLine("Did not update. Trip was not found...");
+            }
         }
 
         public void DeleteTrip(int tripId)
