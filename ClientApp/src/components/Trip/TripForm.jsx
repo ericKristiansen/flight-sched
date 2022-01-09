@@ -2,6 +2,7 @@
 import React from "react";
 import { Component } from "react";
 import axios from "axios";
+import './trip.css'
 
 export class TripForm extends Component {
 
@@ -24,8 +25,16 @@ export class TripForm extends Component {
         this.onChangeDateStarted = this.onChangeDateStarted.bind(this);
         this.onChangeDateCompleted = this.onChangeDateCompleted.bind(this);
 
+        this.getDeleteButtonClasses = this.getDeleteButtonClasses.bind(this);
+        this.deleteThisTrip = this.deleteThisTrip.bind(this);
         this.convertDate = this.convertDate.bind(this);
         this.onSubmit.bind(this);
+    }
+
+
+    getDeleteButtonClasses = () => {
+        let cl = this.props.title === "Modify Trip" ? "btn-danger" : "btn-danger hide-me";
+        return cl;
     }
 
     /***
@@ -47,7 +56,7 @@ export class TripForm extends Component {
     }
 
     outputChange(stTrip) {
-        this.setState({stTrip});
+        this.setState({ stTrip });
         console.log("updated: ", stTrip);
     }
 
@@ -75,9 +84,18 @@ export class TripForm extends Component {
         this.outputChange(stTrip);
     }
 
+    deleteThisTrip = (e) => {
+
+        e.preventDefault();
+        
+        const {history} = this.props
+        history.push('/deleteConfirmation');
+
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
-        const {history} = this.props;
+        const { history } = this.props;
 
         if (this.props.title === "Modify Trip") {
 
@@ -94,10 +112,9 @@ export class TripForm extends Component {
             axios.put(`https://localhost:7269/api/Trips/UpdateTrip/${tripObject.Id}`, tripObject)
                 .then(res => {
                     console.log(res.data);
-                    this.setState({ trip: res.data, loading: false });
+                    this.setState({ trip: res.data, loading: false }, history.push('/trips'));
                 });
-                
-                history.push('/trips');
+
         }
         else if (this.props.title === "Add Trip") {
 
@@ -127,7 +144,7 @@ export class TripForm extends Component {
      */
     convertDate = (dateString) => {
         if (dateString === null) { return null; }
-        return new Date(dateString).toISOString().slice(0,10);
+        return new Date(dateString).toISOString().slice(0, 10);
     }
 
 
@@ -136,6 +153,7 @@ export class TripForm extends Component {
         let content = (
             <div className="trip-form" >
                 <h3>{this.props.title}</h3>
+                <hr/>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Trip Name: </label>
@@ -143,7 +161,7 @@ export class TripForm extends Component {
                             className="form-control"
                             defaultValue={this.state.trip.name}
                             onChange={this.onChangeName}
-                             />
+                        />
                     </div>
                     <div className="form-group">
                         <label>Description: </label>
@@ -176,9 +194,19 @@ export class TripForm extends Component {
                         </div>
                     </div>
 
-                    <div className="form-group submit-div">
-                        <input type="submit" variant="primary" value="Save Trip" className="btn-primary" />
+                    <div className="submit-group-div">
+
+                        <div className="form-group submit-div btn-div">
+                            <input type="submit" variant="primary" value="Save Trip" className="btn-primary" />
+                        </div>
+
+                        <div className="form-group submit-div btn-div">
+                            <input type="button" variant="primary" onClick={this.deleteThisTrip} value="Delete Trip" className={this.getDeleteButtonClasses()} />
+                        </div>
+
                     </div>
+
+
                 </form>
 
             </div>);
@@ -188,6 +216,6 @@ export class TripForm extends Component {
                 {content}
             </>
         );
-        }
-    
+    }
+
 }
