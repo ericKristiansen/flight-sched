@@ -60,7 +60,9 @@ export class Trips extends Component
 
     componentDidMount(){
         this.populateTripsData();
+        console.log("did mount...");
     }
+
 
     populateTripsData(){
         axios.get('https://localhost:7269/api/Trips/GetTrips')
@@ -68,7 +70,7 @@ export class Trips extends Component
         const response = res.data;
         this.setState({ trips: response, loading: false });
         console.table(res);
-      })
+      });
     }
 
     render()

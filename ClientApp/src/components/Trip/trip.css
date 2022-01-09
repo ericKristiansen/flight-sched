@@ -1,0 +1,16 @@
+.hide-me{
+    display: none;
+}
+
+.btn-div > input{
+    width: 120px;
+    margin-left: 10px;
+}
+
+.submit-group-div{
+    margin-top: 5%;
+}
+
+.delete-div{
+    border: solid black 1px;
+}
