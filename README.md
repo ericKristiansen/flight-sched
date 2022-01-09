@@ -1,7 +1,7 @@
 # Trips Recorder
 ### .Net Core React solution
 
-## Keep track of trips
+## Keep track of trips - Simple Crud interface for a Trip(name, description, startDate, endDate)
 
 ### A user can view all trips
 ### A user can add a trip
@@ -9,7 +9,8 @@
 
 ## To Do
 
-### Finish update/delete trip
-### Add Redux
+### Debug - dependency error after redux plugged in
+### Finish Redux
 ### Add darkmode
 ### Add SQLite persistance
+### Auth0 
