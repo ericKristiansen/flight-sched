@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { Trips } from './components/Trip/Trips';
+import Trips from './components/Trip/Trips';
 import { AddTrip } from './components/Trip/AddTrip';
 import { ModifyTrip } from './components/Trip/ModifyTrip';
 import { DeleteConfirmation } from './components/Trip/DeleteConfirmation';
