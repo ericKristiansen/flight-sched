@@ -3,16 +3,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { Provider } from 'react-redux';
+import configureStore from './store/store';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
+const store = configureStore({});
 
 ReactDOM.render(
+  <Provider store={store}>
   <BrowserRouter basename={baseUrl}>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   rootElement);
 
 // If you want your app to work offline and load faster, you can change
